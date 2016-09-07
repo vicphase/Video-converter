@@ -1,0 +1,11 @@
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\obj\Debug\Convetidor_de_Video.MainForm.resources
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\obj\Debug\Convetidor de Video.csproj.GenerateResource.Cache
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\bin\Debug\Convetidor de Video.exe.config
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\bin\Debug\Convetidor de Video.exe
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\bin\Debug\Convetidor de Video.pdb
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\bin\Debug\MediaToolkit.dll
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\obj\Debug\Convetidor_de_Video.Properties.Resources.resources
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\obj\Debug\Convetidor de Video.exe
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\obj\Debug\Convetidor de Video.pdb
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\bin\Debug\Properties\Resources.Designer.cs
+C:\Users\victo\Desktop\Convetidor de Video\Convetidor de Video\obj\Debug\Convetidor de Video.csprojResolveAssemblyReference.cache

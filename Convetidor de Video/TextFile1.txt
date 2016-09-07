@@ -1,0 +1,3 @@
+﻿//Convert command
+ffmpeg -i filename.mp4 -vcodec mpeg4 -acodec ac3 output.avi
+
