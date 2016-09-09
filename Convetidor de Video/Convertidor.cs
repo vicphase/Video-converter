@@ -1,5 +1,6 @@
 ﻿using MediaToolkit;
 using MediaToolkit.Model;
+using MediaToolkit.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +28,25 @@ namespace Convetidor_de_Video
         //Tiempo que durará el video que recortaremos
         public double DurationCut { get; set; }
         //Grados en los que se rotará el video
-        public int RotationDegrees { get; set; }
+        public VideoSize SizeVideo { get; set; }
         //Opcion para descargar el audio
-        public bool DownloadAudio { get; set; }
+        public int Fps { get; set; }
+        //Nombre del nuevo video
+        public string SaveFilePath { get; set; }
+        //Conversion Options
+        public ConversionOptions Option { get; set; }
 
         public Convertidor()
         {
+            this.OpenFilePath = "";
+            this.Extension = "";
+            this.VideoFile = null;
+            this.Duration = 0;
+            this.NewExtension = "";
+            this.StartTimeCut = 0;
+            this.DurationCut = 0;
             this.VideoEngine = new Engine();
+            this.Option = new ConversionOptions();
         }
 
         public void setMetaData()
@@ -43,8 +56,33 @@ namespace Convetidor_de_Video
 
         public void setDuration()
         {
-            this.Duration=this.VideoFile.Metadata.Duration.Seconds;
+            this.Duration = this.VideoFile.Metadata.Duration.Seconds;
         }
 
+        public void convertVideo()
+        {
+            if(this.StartTimeCut!=0 && this.DurationCut != 0)
+            {
+                this.Option.CutMedia(TimeSpan.FromSeconds(this.StartTimeCut), TimeSpan.FromSeconds(this.DurationCut));
+                this.Option.VideoSize = this.SizeVideo;
+                this.Option.VideoFps = this.Fps;
+                MediaFile inputFile = new MediaFile(this.OpenFilePath);
+                MediaFile outputFile = new MediaFile(this.SaveFilePath);
+                this.VideoEngine.Convert(inputFile, outputFile, this.Option);
+            }
+
+        }
+
+        public string toString()
+        {
+            return "File path: " + this.OpenFilePath + "\n" +
+                "Extension: " + this.Extension + "\n" +
+                "Duration: " + this.Duration + "\n" +
+                "New Extension: " + this.NewExtension + "\n" +
+                "Start Time Cut: " + this.StartTimeCut + "\n" +
+                "Duration Cut: " + this.DurationCut + "\n" +
+                "SaveFile Path: "+this.SaveFilePath;
+
+        }
     }
 }

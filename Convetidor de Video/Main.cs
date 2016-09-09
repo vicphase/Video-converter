@@ -1,5 +1,6 @@
 ﻿using MediaToolkit;
 using MediaToolkit.Model;
+using MediaToolkit.Options;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,8 +27,7 @@ namespace Convetidor_de_Video
 
         //Event to read the file and get the path
         private void ButtonSelectFile_Click(object sender, EventArgs e)
-        {
-
+        {           
             MediaFile inputFile = new MediaFile();
             Stream myStream = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -123,5 +123,83 @@ namespace Convetidor_de_Video
                 }
             }
         }
+
+        private void NumericUpDownDuration_ValueChanged(object sender, EventArgs e)
+        {
+            if (VideoConvertidor.VideoFile != null)
+            {
+                if ((double) NumericUpDownDuration.Value > VideoConvertidor.Duration-VideoConvertidor.StartTimeCut)
+                {
+                    MessageBox.Show("You can´t assign that value");
+                    NumericUpDownDuration.Value = 0;
+                }
+                else
+                {
+                    VideoConvertidor.DurationCut = (double)NumericUpDownDuration.Value;
+                }
+            }
+        }
+
+        private void RadioButton480_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadioButton480.Checked)
+            {
+                VideoConvertidor.SizeVideo = VideoSize.Hd480;
+            }
+        }
+
+        private void RadioButton180_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadioButton720.Checked)
+            {
+                VideoConvertidor.SizeVideo = VideoSize.Hd720;
+            }
+        }
+
+        private void RadioButton270_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadioButton1080.Checked)
+            {
+                VideoConvertidor.SizeVideo = VideoSize.Hd1080;
+            }
+        }
+
+        private void numericUpDownFps_ValueChanged(object sender, EventArgs e)
+        {
+            VideoConvertidor.Fps = (int)numericUpDownFps.Value;
+        }
+
+
+        private void ButtonDownload_Click(object sender, EventArgs e)
+        {
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Title = "Save your video";
+            saveFileDialog1.Filter = "Video Files|*" + VideoConvertidor.NewExtension;
+            saveFileDialog1.AddExtension = true;
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    myStream.Close();
+                    File.Delete(saveFileDialog1.FileName);
+                    VideoConvertidor.SaveFilePath = saveFileDialog1.FileName;
+                }
+            }
+            LabelDownloadFinished.Text = "Your video is being converted, please wait";
+            VideoConvertidor.convertVideo();
+            LabelDownloadFinished.Text = "Your video file has been converted";
+        }
+
+        private void ButtonCheckStatus_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show(VideoConvertidor.toString());
+        }
+
     }
 }

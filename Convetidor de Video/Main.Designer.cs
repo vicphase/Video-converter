@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.LabelTitle = new System.Windows.Forms.Label();
             this.TableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.GroupBoxDownloadFile = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.LabelDownloadFinished = new System.Windows.Forms.Label();
             this.ButtonDownload = new System.Windows.Forms.Button();
+            this.LabelDownloadFinished = new System.Windows.Forms.Label();
             this.GroupBoxEditFile = new System.Windows.Forms.GroupBox();
             this.TableLayoutEditFile = new System.Windows.Forms.TableLayoutPanel();
             this.LabelChooseFormat = new System.Windows.Forms.Label();
@@ -49,20 +50,18 @@
             this.NumericUpDownDuration = new System.Windows.Forms.NumericUpDown();
             this.LabelDuration = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.LabelRotate = new System.Windows.Forms.Label();
+            this.LabelVideoSize = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.RadioButton270 = new System.Windows.Forms.RadioButton();
-            this.RadioButton180 = new System.Windows.Forms.RadioButton();
-            this.RadioButton90 = new System.Windows.Forms.RadioButton();
+            this.RadioButton1080 = new System.Windows.Forms.RadioButton();
+            this.RadioButton720 = new System.Windows.Forms.RadioButton();
+            this.RadioButton480 = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.RadioButtonDownloadNo = new System.Windows.Forms.RadioButton();
-            this.RadioButtonDownloadYes = new System.Windows.Forms.RadioButton();
+            this.LabelFps = new System.Windows.Forms.Label();
             this.GroupBoxSelectFile = new System.Windows.Forms.GroupBox();
             this.TableLayoutSelectFile = new System.Windows.Forms.TableLayoutPanel();
             this.ButtonSelectFile = new System.Windows.Forms.Button();
             this.LabelFileName = new System.Windows.Forms.Label();
+            this.numericUpDownFps = new System.Windows.Forms.NumericUpDown();
             this.TableLayoutMain.SuspendLayout();
             this.GroupBoxDownloadFile.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -76,9 +75,9 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
             this.GroupBoxSelectFile.SuspendLayout();
             this.TableLayoutSelectFile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFps)).BeginInit();
             this.SuspendLayout();
             // 
             // LabelTitle
@@ -127,40 +126,42 @@
             // 
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Controls.Add(this.LabelDownloadFinished, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.ButtonDownload, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.LabelDownloadFinished, 0, 1);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 31);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowCount = 3;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(330, 441);
             this.tableLayoutPanel8.TabIndex = 2;
-            // 
-            // LabelDownloadFinished
-            // 
-            this.LabelDownloadFinished.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelDownloadFinished.AutoSize = true;
-            this.LabelDownloadFinished.Location = new System.Drawing.Point(3, 316);
-            this.LabelDownloadFinished.Name = "LabelDownloadFinished";
-            this.LabelDownloadFinished.Size = new System.Drawing.Size(324, 29);
-            this.LabelDownloadFinished.TabIndex = 2;
-            this.LabelDownloadFinished.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // ButtonDownload
             // 
             this.ButtonDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonDownload.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ButtonDownload.FlatAppearance.BorderSize = 0;
-            this.ButtonDownload.Location = new System.Drawing.Point(30, 87);
+            this.ButtonDownload.Location = new System.Drawing.Point(30, 82);
             this.ButtonDownload.Margin = new System.Windows.Forms.Padding(30, 3, 30, 3);
             this.ButtonDownload.Name = "ButtonDownload";
             this.ButtonDownload.Size = new System.Drawing.Size(270, 46);
             this.ButtonDownload.TabIndex = 1;
-            this.ButtonDownload.Text = "Download File";
+            this.ButtonDownload.Text = "Save File";
             this.ButtonDownload.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.ButtonDownload.UseVisualStyleBackColor = false;
+            this.ButtonDownload.Click += new System.EventHandler(this.ButtonDownload_Click);
+            // 
+            // LabelDownloadFinished
+            // 
+            this.LabelDownloadFinished.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelDownloadFinished.AutoSize = true;
+            this.LabelDownloadFinished.Location = new System.Drawing.Point(3, 300);
+            this.LabelDownloadFinished.Name = "LabelDownloadFinished";
+            this.LabelDownloadFinished.Size = new System.Drawing.Size(324, 29);
+            this.LabelDownloadFinished.TabIndex = 2;
+            this.LabelDownloadFinished.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // GroupBoxEditFile
             // 
@@ -326,6 +327,11 @@
             // 
             this.NumericUpDownStart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NumericUpDownStart.Location = new System.Drawing.Point(3, 27);
+            this.NumericUpDownStart.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.NumericUpDownStart.Name = "NumericUpDownStart";
             this.NumericUpDownStart.Size = new System.Drawing.Size(152, 35);
             this.NumericUpDownStart.TabIndex = 4;
@@ -335,9 +341,15 @@
             // 
             this.NumericUpDownDuration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NumericUpDownDuration.Location = new System.Drawing.Point(161, 27);
+            this.NumericUpDownDuration.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.NumericUpDownDuration.Name = "NumericUpDownDuration";
             this.NumericUpDownDuration.Size = new System.Drawing.Size(153, 35);
             this.NumericUpDownDuration.TabIndex = 5;
+            this.NumericUpDownDuration.ValueChanged += new System.EventHandler(this.NumericUpDownDuration_ValueChanged);
             // 
             // LabelDuration
             // 
@@ -355,7 +367,7 @@
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.LabelRotate, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.LabelVideoSize, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 234);
@@ -366,17 +378,18 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(323, 97);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
-            // LabelRotate
+            // LabelVideoSize
             // 
-            this.LabelRotate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelRotate.AutoSize = true;
-            this.LabelRotate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelRotate.Location = new System.Drawing.Point(3, 12);
-            this.LabelRotate.Name = "LabelRotate";
-            this.LabelRotate.Size = new System.Drawing.Size(317, 24);
-            this.LabelRotate.TabIndex = 2;
-            this.LabelRotate.Text = "Rotate";
-            this.LabelRotate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LabelVideoSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelVideoSize.AutoSize = true;
+            this.LabelVideoSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelVideoSize.Location = new System.Drawing.Point(3, 12);
+            this.LabelVideoSize.Name = "LabelVideoSize";
+            this.LabelVideoSize.Size = new System.Drawing.Size(317, 24);
+            this.LabelVideoSize.TabIndex = 2;
+            this.LabelVideoSize.Text = "Video Size";
+            this.LabelVideoSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LabelVideoSize.UseMnemonic = false;
             // 
             // tableLayoutPanel5
             // 
@@ -384,9 +397,9 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.Controls.Add(this.RadioButton270, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.RadioButton180, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.RadioButton90, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.RadioButton1080, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.RadioButton720, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.RadioButton480, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 51);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -395,48 +408,51 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(317, 43);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
-            // RadioButton270
+            // RadioButton1080
             // 
-            this.RadioButton270.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.RadioButton270.AutoSize = true;
-            this.RadioButton270.Location = new System.Drawing.Point(224, 3);
-            this.RadioButton270.Name = "RadioButton270";
-            this.RadioButton270.Size = new System.Drawing.Size(78, 33);
-            this.RadioButton270.TabIndex = 1;
-            this.RadioButton270.TabStop = true;
-            this.RadioButton270.Text = "270°";
-            this.RadioButton270.UseVisualStyleBackColor = true;
+            this.RadioButton1080.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.RadioButton1080.AutoSize = true;
+            this.RadioButton1080.Location = new System.Drawing.Point(222, 3);
+            this.RadioButton1080.Name = "RadioButton1080";
+            this.RadioButton1080.Size = new System.Drawing.Size(83, 33);
+            this.RadioButton1080.TabIndex = 1;
+            this.RadioButton1080.TabStop = true;
+            this.RadioButton1080.Text = "1080";
+            this.RadioButton1080.UseVisualStyleBackColor = true;
+            this.RadioButton1080.CheckedChanged += new System.EventHandler(this.RadioButton270_CheckedChanged);
             // 
-            // RadioButton180
+            // RadioButton720
             // 
-            this.RadioButton180.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.RadioButton180.AutoSize = true;
-            this.RadioButton180.Location = new System.Drawing.Point(118, 3);
-            this.RadioButton180.Name = "RadioButton180";
-            this.RadioButton180.Size = new System.Drawing.Size(78, 33);
-            this.RadioButton180.TabIndex = 2;
-            this.RadioButton180.TabStop = true;
-            this.RadioButton180.Text = "180°";
-            this.RadioButton180.UseVisualStyleBackColor = true;
+            this.RadioButton720.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.RadioButton720.AutoSize = true;
+            this.RadioButton720.Location = new System.Drawing.Point(122, 3);
+            this.RadioButton720.Name = "RadioButton720";
+            this.RadioButton720.Size = new System.Drawing.Size(70, 33);
+            this.RadioButton720.TabIndex = 2;
+            this.RadioButton720.TabStop = true;
+            this.RadioButton720.Text = "720";
+            this.RadioButton720.UseVisualStyleBackColor = true;
+            this.RadioButton720.CheckedChanged += new System.EventHandler(this.RadioButton180_CheckedChanged);
             // 
-            // RadioButton90
+            // RadioButton480
             // 
-            this.RadioButton90.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.RadioButton90.AutoSize = true;
-            this.RadioButton90.Location = new System.Drawing.Point(20, 3);
-            this.RadioButton90.Name = "RadioButton90";
-            this.RadioButton90.Size = new System.Drawing.Size(65, 33);
-            this.RadioButton90.TabIndex = 3;
-            this.RadioButton90.TabStop = true;
-            this.RadioButton90.Text = "90°";
-            this.RadioButton90.UseVisualStyleBackColor = true;
+            this.RadioButton480.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.RadioButton480.AutoSize = true;
+            this.RadioButton480.Location = new System.Drawing.Point(17, 3);
+            this.RadioButton480.Name = "RadioButton480";
+            this.RadioButton480.Size = new System.Drawing.Size(70, 33);
+            this.RadioButton480.TabIndex = 3;
+            this.RadioButton480.TabStop = true;
+            this.RadioButton480.Text = "480";
+            this.RadioButton480.UseVisualStyleBackColor = true;
+            this.RadioButton480.CheckedChanged += new System.EventHandler(this.RadioButton480_CheckedChanged);
             // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.numericUpDownFps, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.LabelFps, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 337);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -446,56 +462,17 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(323, 101);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
-            // label1
+            // LabelFps
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(317, 24);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Download audio?";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.RadioButtonDownloadNo, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.RadioButtonDownloadYes, 1, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 53);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(317, 45);
-            this.tableLayoutPanel7.TabIndex = 4;
-            // 
-            // RadioButtonDownloadNo
-            // 
-            this.RadioButtonDownloadNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.RadioButtonDownloadNo.AutoSize = true;
-            this.RadioButtonDownloadNo.Location = new System.Drawing.Point(47, 3);
-            this.RadioButtonDownloadNo.Name = "RadioButtonDownloadNo";
-            this.RadioButtonDownloadNo.Size = new System.Drawing.Size(63, 33);
-            this.RadioButtonDownloadNo.TabIndex = 3;
-            this.RadioButtonDownloadNo.TabStop = true;
-            this.RadioButtonDownloadNo.Text = "No";
-            this.RadioButtonDownloadNo.UseVisualStyleBackColor = true;
-            // 
-            // RadioButtonDownloadYes
-            // 
-            this.RadioButtonDownloadYes.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.RadioButtonDownloadYes.AutoSize = true;
-            this.RadioButtonDownloadYes.Location = new System.Drawing.Point(201, 3);
-            this.RadioButtonDownloadYes.Name = "RadioButtonDownloadYes";
-            this.RadioButtonDownloadYes.Size = new System.Drawing.Size(73, 33);
-            this.RadioButtonDownloadYes.TabIndex = 4;
-            this.RadioButtonDownloadYes.TabStop = true;
-            this.RadioButtonDownloadYes.Text = "Yes";
-            this.RadioButtonDownloadYes.UseVisualStyleBackColor = true;
+            this.LabelFps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelFps.AutoSize = true;
+            this.LabelFps.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelFps.Location = new System.Drawing.Point(3, 13);
+            this.LabelFps.Name = "LabelFps";
+            this.LabelFps.Size = new System.Drawing.Size(317, 24);
+            this.LabelFps.TabIndex = 3;
+            this.LabelFps.Text = "FPS";
+            this.LabelFps.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GroupBoxSelectFile
             // 
@@ -550,6 +527,30 @@
             this.LabelFileName.TabIndex = 1;
             this.LabelFileName.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // numericUpDownFps
+            // 
+            this.numericUpDownFps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDownFps.Location = new System.Drawing.Point(3, 53);
+            this.numericUpDownFps.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numericUpDownFps.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownFps.Name = "numericUpDownFps";
+            this.numericUpDownFps.Size = new System.Drawing.Size(317, 35);
+            this.numericUpDownFps.TabIndex = 6;
+            this.numericUpDownFps.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownFps.ValueChanged += new System.EventHandler(this.numericUpDownFps_ValueChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -559,6 +560,7 @@
             this.ClientSize = new System.Drawing.Size(1024, 564);
             this.Controls.Add(this.TableLayoutMain);
             this.Controls.Add(this.LabelTitle);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Video Converter";
@@ -584,11 +586,10 @@
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
             this.GroupBoxSelectFile.ResumeLayout(false);
             this.TableLayoutSelectFile.ResumeLayout(false);
             this.TableLayoutSelectFile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFps)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -617,19 +618,17 @@
         private System.Windows.Forms.NumericUpDown NumericUpDownStart;
         private System.Windows.Forms.NumericUpDown NumericUpDownDuration;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label LabelRotate;
+        private System.Windows.Forms.Label LabelVideoSize;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.RadioButton RadioButton270;
-        private System.Windows.Forms.RadioButton RadioButton180;
-        private System.Windows.Forms.RadioButton RadioButton90;
+        private System.Windows.Forms.RadioButton RadioButton1080;
+        private System.Windows.Forms.RadioButton RadioButton720;
+        private System.Windows.Forms.RadioButton RadioButton480;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.RadioButton RadioButtonDownloadNo;
-        private System.Windows.Forms.RadioButton RadioButtonDownloadYes;
+        private System.Windows.Forms.Label LabelFps;
         private System.Windows.Forms.Button ButtonDownload;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label LabelDownloadFinished;
+        private System.Windows.Forms.NumericUpDown numericUpDownFps;
     }
 }
 
